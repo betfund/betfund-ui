@@ -42,12 +42,12 @@ const betfundApi = {
         return fetch(`${apiUrl}/api/v1/login/access-token`, options);
     },
     /**
-     * Pings authentication server to determine whether access token is valid.
-     * @param {string} token - API token provided via Betfund Authentication API.
+     * Pings API server to determine whether access token is valid.
+     * @param {string} token - JWT token provided via Betfund API.
      */
     async isActiveToken(token) {
         var headers = new Headers();
-        headers.append("Authorization", "Bearer " + token);
+        headers.append("Authorization", `Bearer ${token}`);
 
         var options = {
             method: 'POST',
@@ -58,7 +58,7 @@ const betfundApi = {
     },
     /**
      * Gets current user information.
-     * @param {string} token - API token provided via Betfund Authentication API.
+     * @param {string} token - JWT token provided via Betfund API.
      */
     async getMe(token) {
         return axios.get(`${apiUrl}/api/v1/users/me`, authHeaders(token));
@@ -77,8 +77,32 @@ const betfundApi = {
     async updateUser(token, userId, data) {
         return axios.put(`${apiUrl}/api/v1/users/${userId}`, data, authHeaders(token));
     },
-    async createUser(token, data) {
-        return axios.post(`${apiUrl}/api/v1/users/`, data, authHeaders(token));
+    /**
+     * Registers a user.
+     * @param {string} email - Email of registering user
+     * @param {string} password - Password of registering user
+     * @param {string} firstName - First name of registering user
+     * @param {string} lastName - Last name of registering user
+     */
+    async createUser(email, password, firstName, lastName) {
+        // Set headers
+        var headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        // Set body
+        var body = JSON.stringify({
+            "email": email,
+            "password": password,
+            "first_name": firstName,
+            "last_name": lastName
+        });
+        // Set options
+        var options = {
+            method: 'POST',
+            headers: headers,
+            body: body,
+            redirect: 'follow'
+        };
+        return fetch(`${apiUrl}/api/v1/users/open`, options);
     },
     async passwordRecovery(email) {
         return axios.post(`${apiUrl}/api/v1/password-recovery/${email}`);
