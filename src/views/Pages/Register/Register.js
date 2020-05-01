@@ -1,5 +1,18 @@
 import React, { Component } from 'react';
-import { Alert, Button, Card, CardBody, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import {
+  Alert,
+  Button,
+  Card,
+  CardBody,
+  Col,
+  Container,
+  Form,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Row
+} from 'reactstrap';
 import { betfundApi } from '../../../api'
 
 /**
@@ -20,7 +33,12 @@ class Register extends Component {
   }
 
   /**
-   * Handles updating state. Updates `email`, `password`, `passwordRepeat`, `firstName`, `lastName`.
+   * Handles updating state. Updates:
+   * - `email`
+   * - `password`
+   * - `passwordRepeat`
+   * - `firstName`
+   * - `lastName`
    */
   handleChange = event => {
     this.setState({ [event.target.id]: event.target.value });
@@ -53,11 +71,11 @@ class Register extends Component {
         if (response.status === 400) {
           // Bad credentials passed
           // TODO: Change this to read the message from API
-          this.setState({ error: 'A user with this email already exists.' });
+          this.setState({ error: response.msg });
           this.setState({ loading: false });
         } else if (response.status > 400) {
           // If anything greater than 400, something is wrong
-          this.setState({ error: 'Unknown error occurred.' });
+          this.setState({ error: response.msg });
           this.setState({ loading: false });
         } else{
           response.json().then(
@@ -71,8 +89,7 @@ class Register extends Component {
       },
       (error) => {
         // This happens if the API resource is not active
-        this.setState({ loading: false })
-        this.setState({ error: 'Something went wrong, please try again later.' });
+        this.props.history.push('/500')
       }
     )
   }
@@ -83,9 +100,7 @@ class Register extends Component {
   errorAlert = () => {
     if (this.state.error) {
       return (
-        <Alert color="danger">
-          { this.state.error }
-        </Alert>
+        <Alert color="danger">{this.state.error}</Alert>
       );
     } else {
       return null;

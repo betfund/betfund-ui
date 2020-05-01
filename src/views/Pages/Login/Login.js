@@ -59,8 +59,7 @@ class Login extends Component {
       },
       (error) => {
         // This happens if the API resource is not active
-        this.setState({ loading: false })
-        this.setState({ error: 'Something went wrong, please try again later.' });
+        this.props.history.push('/500')
       }
     )
   }
@@ -71,9 +70,7 @@ class Login extends Component {
   errorAlert = () => {
     if (this.state.error) {
       return (
-        <Alert color="danger">
-          { this.state.error }
-        </Alert>
+        <Alert color="danger">{this.state.error}</Alert>
       );
     } else {
       return null;
@@ -101,7 +98,7 @@ class Login extends Component {
                         </InputGroupAddon>
                         <Input
                           type="email"
-                          placeholder="Username"
+                          placeholder="Email"
                           autoComplete="username"
                           id="username"
                           value={this.state.username}
@@ -132,7 +129,7 @@ class Login extends Component {
                           </Button>
                         </Col>
                         <Col xs="6" className="text-right">
-                          <Link color="link" className="px-0">Forgot password?</Link>
+                          <Link to="/forgot" color="link" className="px-0">Forgot password?</Link>
                         </Col>
                       </Row>
                     </Form>
