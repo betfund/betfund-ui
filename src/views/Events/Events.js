@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Badge, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
-import { betfundApi } from '../../../api'
-import sportIdMap from '../../../mappings'
+import { betfundApi } from '../../api'
+import sportIdMap from '../../mappings'
 
 class Events extends Component {
 
@@ -15,11 +15,11 @@ class Events extends Component {
   }
 
   epochConvert(epoch) {
-    var date = new Date(epoch*1000);
+    var date = new Date(epoch * 1000);
     return date.toLocaleString();
   }
 
-  componentDidMount() {
+  getEvents() {
     betfundApi.upcomingEvents()
       .then(res => res.json())
       .then(
@@ -40,6 +40,11 @@ class Events extends Component {
           });
         }
       )
+  }
+
+  componentDidMount() {
+    this.getEvents()
+    // this.timer = setInterval(() => this.getEvents(), 20000)
   }
 
   render() {
@@ -71,18 +76,18 @@ class Events extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                    {
-                      items.map(item => (
-                        <tr key={item._id}>
-                          <td>{this.epochConvert(item.data.time)}</td>
-                          <td>{sportIdMap[item.data.sport_id]}</td>
-                          <td>{item.data.home.name}</td>
-                          <td>{item.data.away.name}</td>
-                          <td>{item.data.league.name}</td>
-                          <td>{item.data.time_status}</td>
-                        </tr>
-                      ))
-                    }
+                      {
+                        items.map(item => (
+                          <tr key={item._id}>
+                            <td>{this.epochConvert(item.data.time)}</td>
+                            <td>{sportIdMap[item.data.sport_id]}</td>
+                            <td>{item.data.home.name}</td>
+                            <td>{item.data.away.name}</td>
+                            <td>{item.data.league.name}</td>
+                            <td>{item.data.time_status}</td>
+                          </tr>
+                        ))
+                      }
                     </tbody>
                   </Table>
                   <Pagination>

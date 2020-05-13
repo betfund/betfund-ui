@@ -5,7 +5,7 @@ const Cards = React.lazy(() => import('./views/Base/Cards'));
 const Carousels = React.lazy(() => import('./views/Base/Carousels'));
 const Collapses = React.lazy(() => import('./views/Base/Collapses'));
 const Dropdowns = React.lazy(() => import('./views/Base/Dropdowns'));
-const Events = React.lazy(() => import('./views/Base/Events'));
+const Events = React.lazy(() => import('./views/Events'));
 const Forms = React.lazy(() => import('./views/Base/Forms'));
 const Jumbotrons = React.lazy(() => import('./views/Base/Jumbotrons'));
 const ListGroups = React.lazy(() => import('./views/Base/ListGroups'));
@@ -34,8 +34,8 @@ const Modals = React.lazy(() => import('./views/Notifications/Modals'));
 const Colors = React.lazy(() => import('./views/Theme/Colors'));
 const Typography = React.lazy(() => import('./views/Theme/Typography'));
 const Widgets = React.lazy(() => import('./views/Widgets/Widgets'));
-const Users = React.lazy(() => import('./views/Users/Users'));
-const User = React.lazy(() => import('./views/Users/User'));
+const Funds = React.lazy(() => import('./views/Funds/Funds'));
+const Fund = React.lazy(() => import('./views/Funds/User'));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -79,8 +79,8 @@ const routes = [
   { path: '/notifications/modals', name: 'Modals', component: Modals },
   { path: '/widgets', name: 'Widgets', component: Widgets },
   { path: '/charts', name: 'Charts', component: Charts },
-  { path: '/users', exact: true,  name: 'Users', component: Users },
-  { path: '/users/:id', exact: true, name: 'User Details', component: User },
+  { path: '/funds', exact: true,  name: 'Funds', component: Funds },
+  { path: '/funds/:id', exact: true, name: 'Fund Details', component: Fund },
 ];
 
 export default routes;
