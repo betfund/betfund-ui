@@ -28,7 +28,8 @@ class Login extends Component {
   /**
    * Handles login action.
    */
-  handleLogin = () => {
+  handleLogin = (e) => {
+    e.preventDefault();
     // Set state of current action
     this.setState({ error: null });
     this.setState({ loading: true });
@@ -36,7 +37,7 @@ class Login extends Component {
     // Get access token from auth endpoint
     betfundApi.logInGetToken(this.state.username, this.state.password).then(
       (response) => {
-        sessionStorage.removeItem('token');
+        localStorage.removeItem('token');
         this.setState({ loading: true });
         // === is equivalent to ==, ESLint prefers ===
         if (response.status === 400) {
@@ -51,7 +52,7 @@ class Login extends Component {
           response.json().then(
             (data) => {
               // If we haven't hit any response issues, we should be good to save the token
-              sessionStorage.setItem('token', data.access_token);
+              localStorage.setItem('token', data.access_token);
               this.props.history.push('/dashboard')
             }
           )

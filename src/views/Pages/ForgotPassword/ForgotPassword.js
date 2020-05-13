@@ -42,7 +42,8 @@ class ForgotPassword extends Component {
   /**
    * Handles forgotten password action.
    */
-  handleForgotPassword = () => {
+  handleForgotPassword = (e) => {
+    e.preventDefault();
     // Set state of current action
     this.setState({ error: null });
     this.setState({ loading: true });
@@ -52,9 +53,12 @@ class ForgotPassword extends Component {
       (response) => {
         this.setState({ loading: true });
         // === is equivalent to ==, ESLint prefers ===
-        if (response.status > 400) {
-          this.setState({ error: response.msg });
+        if (response.status === 404) {
           this.setState({ loading: false });
+          this.setState({ error: "User does not exist." });
+        } else if (response.status > 400 && response.status !== 404) {
+          this.setState({ loading: false });
+          this.setState({ error: "Something went wrong." });
         } else{
           response.json().then(
             (data) => {

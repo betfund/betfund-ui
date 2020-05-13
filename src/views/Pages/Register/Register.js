@@ -28,7 +28,8 @@ class Register extends Component {
       firstName: '',
       lastName: '',
       username: '',
-      password: ''
+      password: '',
+      passwordRepeat: ''
     };
   }
 
@@ -47,7 +48,8 @@ class Register extends Component {
   /**
    * Handles registration action.
    */
-  handleRegister = () => {
+  handleRegister = (e) => {
+    e.preventDefault();
     // Set state of current action
     this.setState({ error: null });
     this.setState({ loading: true });
@@ -60,7 +62,7 @@ class Register extends Component {
 
     // Get access token from auth endpoint
     betfundApi.createUser(
-      this.state.email,
+      this.state.username,
       this.state.password,
       this.state.firstName,
       this.state.lastName
@@ -69,9 +71,8 @@ class Register extends Component {
         this.setState({ loading: true });
         // === is equivalent to ==, ESLint prefers ===
         if (response.status === 400) {
-          // Bad credentials passed
-          // TODO: Change this to read the message from API
-          this.setState({ error: response.msg });
+          // Bad information passed
+          this.setState({ error: "A user with this email already exists." });
           this.setState({ loading: false });
         } else if (response.status > 400) {
           // If anything greater than 400, something is wrong
@@ -158,9 +159,9 @@ class Register extends Component {
                       <Input
                         type="email"
                         placeholder="Email"
-                        autoComplete="email"
-                        id="email"
-                        value={this.state.email}
+                        autoComplete="username"
+                        id="username"
+                        value={this.state.username}
                         onChange={this.handleChange}
                         required={true}
                       />

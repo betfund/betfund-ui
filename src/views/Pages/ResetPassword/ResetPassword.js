@@ -43,7 +43,8 @@ class ResetPassword extends Component {
   /**
    * Handles forgotten password action.
    */
-  handlePasswordReset = () => {
+  handlePasswordReset = (e) => {
+    e.preventDefault();
     // Set state of current action
     this.setState({ error: null });
     this.setState({ loading: true });
@@ -95,7 +96,6 @@ class ResetPassword extends Component {
 
   render() {
     if (this.state.message) {
-      debugger;
       // If user has successfully set a new password, display message
       // and prompt redirect
       return (
@@ -129,6 +129,7 @@ class ResetPassword extends Component {
                   <Card className="p-4">
                     <CardBody>
                       <Form onSubmit={this.handlePasswordReset}>
+                        {/* There should be a conditional here */}
                         <h1>Reset password</h1>
                         <p className="text-muted">Enter your new password</p>
                         <InputGroup className="mb-3">

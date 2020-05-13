@@ -137,9 +137,34 @@ const betfundApi = {
       body: body,
       redirect: 'follow'
     };
-
     return fetch(`${apiUrl}/api/v1/reset-password`, options);
   },
+  /**
+   * Calls UpcomingEvents endpoint.
+   * @param {int} sportId - ID of sport
+   * @param {int} asOf - Date to search on
+   */
+  async upcomingEvents(asOf = null, sportId = null) {
+    // Set URL params
+    var params = {
+      as_of: asOf,
+      sport_id: sportId
+    }
+    // Endpoint URL
+    var url = new URL(`${apiUrl}/api/v1/events/upcoming`)
+    // Extend URL with params if not null
+    Object.keys(params).forEach(function (key) {
+      if (params[key] != null) {
+        url.searchParams.append(key, params[key])
+      }
+    });
+    // Set options
+    var options = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    return fetch(url, options);
+  }
 };
 
 export { betfundApi };
