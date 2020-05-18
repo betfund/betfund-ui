@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // import { renderRoutes } from 'react-router-config';
 import './App.scss';
 import { AuthenticatedRoute, UnauthenticatedRoute, loading } from './auth'
@@ -16,10 +16,9 @@ const Page404 = React.lazy(() => import('./views/Pages/Page404'));
 const Page500 = React.lazy(() => import('./views/Pages/Page500'));
 
 class App extends Component {
-
   render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
           <React.Suspense fallback={loading()}>
             <Switch>
               <UnauthenticatedRoute exact path="/login" name="Login Page" component={Login} />
@@ -31,7 +30,7 @@ class App extends Component {
               <AuthenticatedRoute path="/" name="Home" component={DefaultLayout} />
             </Switch>
           </React.Suspense>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }

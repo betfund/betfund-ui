@@ -1,0 +1,6 @@
+{
+    "name": "CreateFunds",
+    "version": "0.0.0",
+    "private": true,
+    "main": "./CreateFunds.js"
+}
