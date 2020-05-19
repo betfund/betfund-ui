@@ -1,7 +1,7 @@
 import React from 'react';
 
 // const Breadcrumbs = React.lazy(() => import('./views/Base/Breadcrumbs'));
-// const Cards = React.lazy(() => import('./views/Base/Cards'));
+const Cards = React.lazy(() => import('./views/Base/Cards'));
 // const Carousels = React.lazy(() => import('./views/Base/Carousels'));
 // const Collapses = React.lazy(() => import('./views/Base/Collapses'));
 // const Dropdowns = React.lazy(() => import('./views/Base/Dropdowns'));
@@ -18,10 +18,10 @@ const Forms = React.lazy(() => import('./views/Base/Forms'));
 // const Tables = React.lazy(() => import('./views/Base/Tables'));
 // const Tabs = React.lazy(() => import('./views/Base/Tabs'));
 // const Tooltips = React.lazy(() => import('./views/Base/Tooltips'));
-// const BrandButtons = React.lazy(() => import('./views/Buttons/BrandButtons'));
-// const ButtonDropdowns = React.lazy(() => import('./views/Buttons/ButtonDropdowns'));
-// const ButtonGroups = React.lazy(() => import('./views/Buttons/ButtonGroups'));
-// const Buttons = React.lazy(() => import('./views/Buttons/Buttons'));
+const BrandButtons = React.lazy(() => import('./views/Buttons/BrandButtons'));
+const ButtonDropdowns = React.lazy(() => import('./views/Buttons/ButtonDropdowns'));
+const ButtonGroups = React.lazy(() => import('./views/Buttons/ButtonGroups'));
+const Buttons = React.lazy(() => import('./views/Buttons/Buttons'));
 // const Charts = React.lazy(() => import('./views/Charts'));
 const Dashboard = React.lazy(() => import('./views/Dashboard'));
 // const CoreUIIcons = React.lazy(() => import('./views/Icons/CoreUIIcons'));
@@ -33,9 +33,9 @@ const Dashboard = React.lazy(() => import('./views/Dashboard'));
 // const Badges = React.lazy(() => import('./views/Notifications/Badges'));
 // const Modals = React.lazy(() => import('./views/Notifications/Modals'));
 
-// const Colors = React.lazy(() => import('./views/Theme/Colors'));
+const Colors = React.lazy(() => import('./views/Theme/Colors'));
 // const Typography = React.lazy(() => import('./views/Theme/Typography'));
-// const Widgets = React.lazy(() => import('./views/Widgets/Widgets'));
+const Widgets = React.lazy(() => import('./views/Widgets/Widgets'));
 
 const ViewFunds = React.lazy(() => import('./views/Funds/ViewFunds'));
 const CreateFunds = React.lazy(() => import('./views/Funds/CreateFunds'));
@@ -47,10 +47,10 @@ const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   // { path: '/theme', exact: true, name: 'Theme', component: Colors },
-  // { path: '/theme/colors', name: 'Colors', component: Colors },
+  { path: '/theme/colors', name: 'Colors', component: Colors },
   // { path: '/theme/typography', name: 'Typography', component: Typography },
-  // { path: '/base', exact: true, name: 'Base', component: Cards },
-  // { path: '/base/cards', name: 'Cards', component: Cards },
+  { path: '/base', exact: true, name: 'Base', component: Cards },
+  { path: '/base/cards', name: 'Cards', component: Cards },
   { path: '/base/forms', name: 'Forms', component: Forms },
   // { path: '/base/switches', name: 'Switches', component: Switches },
   // { path: '/base/tables', name: 'Tables', component: Tables },
@@ -68,10 +68,10 @@ const routes = [
   // { path: '/base/progress-bar', name: 'Progress Bar', component: ProgressBar },
   // { path: '/base/tooltips', name: 'Tooltips', component: Tooltips },
   // { path: '/buttons', exact: true, name: 'Buttons', component: Buttons },
-  // { path: '/buttons/buttons', name: 'Buttons', component: Buttons },
-  // { path: '/buttons/button-dropdowns', name: 'Button Dropdowns', component: ButtonDropdowns },
-  // { path: '/buttons/button-groups', name: 'Button Groups', component: ButtonGroups },
-  // { path: '/buttons/brand-buttons', name: 'Brand Buttons', component: BrandButtons },
+  { path: '/buttons/buttons', name: 'Buttons', component: Buttons },
+  { path: '/buttons/button-dropdowns', name: 'Button Dropdowns', component: ButtonDropdowns },
+  { path: '/buttons/button-groups', name: 'Button Groups', component: ButtonGroups },
+  { path: '/buttons/brand-buttons', name: 'Brand Buttons', component: BrandButtons },
   { path: '/events', name: 'Events', component: Events },
   // { path: '/icons', exact: true, name: 'Icons', component: CoreUIIcons },
   // { path: '/icons/coreui-icons', name: 'CoreUI Icons', component: CoreUIIcons },
@@ -82,7 +82,7 @@ const routes = [
   // { path: '/notifications/alerts', name: 'Alerts', component: Alerts },
   // { path: '/notifications/badges', name: 'Badges', component: Badges },
   // { path: '/notifications/modals', name: 'Modals', component: Modals },
-  // { path: '/widgets', name: 'Widgets', component: Widgets },
+  { path: '/widgets', name: 'Widgets', component: Widgets },
   // { path: '/charts', name: 'Charts', component: Charts },
   { path: '/funds', exact: true, name: 'Funds', component: ViewFunds },
   { path: '/funds/create', exact: true, name: 'Create', component: CreateFunds },

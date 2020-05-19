@@ -26,7 +26,6 @@ import {
   Row,
 } from 'reactstrap';
 import { betfundApi } from '../../../api'
-import baseball1 from '../../../assets/img/sports/baseball1.jpeg'
 
 
 class CreateFunds extends Component {
@@ -93,35 +92,197 @@ class CreateFunds extends Component {
                     </Col>
                   </FormGroup>
                   <FormGroup row>
-                    <Col md="3"><Label>Collective Wagers</Label></Col>
+                    <Col md="3"><Label>Capital Allocation</Label></Col>
+                    <Col md="9">
+                      <Row>
+                        <Col md="2">
+                          <Input type="select" name="selectSm" id="SelectLm" bsSize="sm">
+                            <option value="0">0%</option>
+                            <option value="5">5%</option>
+                            <option value="10">10%</option>
+                            <option value="15">15%</option>
+                            <option value="20">20%</option>
+                            <option value="25">25%</option>
+                            <option value="30">30%</option>
+                          </Input>
+                        </Col>
+                        <Col md="10">
+                          <Label className="form-check-label" htmlFor="checkbox1">Straight Up (1)</Label>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md="2">
+                          <Input type="select" name="selectSm" id="SelectLm" bsSize="sm">
+                            <option value="0">0%</option>
+                            <option value="5">5%</option>
+                            <option value="10">10%</option>
+                            <option value="15">15%</option>
+                            <option value="20">20%</option>
+                            <option value="25">25%</option>
+                            <option value="30">30%</option>
+                          </Input>
+                        </Col>
+                        <Col md="10">
+                          <Label className="form-check-label" htmlFor="checkbox1">Straight Up (2)</Label>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md="2">
+                          <Input type="select" name="selectSm" id="SelectLm" bsSize="sm">
+                            <option value="0">0%</option>
+                            <option value="5">5%</option>
+                            <option value="10">10%</option>
+                            <option value="15">15%</option>
+                            <option value="20">20%</option>
+                            <option value="25">25%</option>
+                            <option value="30">30%</option>
+                          </Input>
+                        </Col>
+                        <Col md="10">
+                          <Label className="form-check-label" htmlFor="checkbox1">Straight Up (3)</Label>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md="2">
+                          <Input type="select" name="selectSm" id="SelectLm" bsSize="sm">
+                            <option value="0">0%</option>
+                            <option value="5">5%</option>
+                            <option value="10">10%</option>
+                            <option value="15">15%</option>
+                            <option value="20">20%</option>
+                            <option value="25">25%</option>
+                            <option value="30">30%</option>
+                          </Input>
+                        </Col>
+                        <Col md="10">
+                          <Label className="form-check-label" htmlFor="checkbox1">Two Team Parlay (1/2)</Label>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md="2">
+                          <Input type="select" name="selectSm" id="SelectLm" bsSize="sm">
+                            <option value="0">0%</option>
+                            <option value="5">5%</option>
+                            <option value="10">10%</option>
+                            <option value="15">15%</option>
+                            <option value="20">20%</option>
+                            <option value="25">25%</option>
+                            <option value="30">30%</option>
+                          </Input>
+                        </Col>
+                        <Col md="10">
+                          <Label className="form-check-label" htmlFor="checkbox1">Two Team Parlay (2/3)</Label>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md="2">
+                          <Input type="select" name="selectSm" id="SelectLm" bsSize="sm">
+                            <option value="0">0%</option>
+                            <option value="5">5%</option>
+                            <option value="10">10%</option>
+                            <option value="15">15%</option>
+                            <option value="20">20%</option>
+                            <option value="25">25%</option>
+                            <option value="30">30%</option>
+                          </Input>
+                        </Col>
+                        <Col md="10">
+                          <Label className="form-check-label" htmlFor="checkbox1">Two Team Parlay (1/3)</Label>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md="2">
+                          <Input type="select" name="selectSm" id="SelectLm" bsSize="sm">
+                            <option value="0">0%</option>
+                            <option value="5">5%</option>
+                            <option value="10">10%</option>
+                            <option value="15">15%</option>
+                            <option value="20">20%</option>
+                            <option value="25">25%</option>
+                            <option value="30">30%</option>
+                          </Input>
+                        </Col>
+                        <Col md="10">
+                          <Label className="form-check-label" htmlFor="checkbox1">Three Team Parlay (1/2/3)</Label>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </FormGroup>
+                  <FormGroup row>
+                    <Col md="3"><Label>Picks Available</Label></Col>
                     <Col md="9">
                       <FormGroup check className="checkbox">
                         <Input className="form-check-input" type="checkbox" id="checkbox1" name="checkbox1" value="option1" />
-                        <Label check className="form-check-label" htmlFor="checkbox1">Straight Up (1)</Label>
+                        <Label check className="form-check-label" htmlFor="checkbox1">Total Over</Label>
                       </FormGroup>
                       <FormGroup check className="checkbox">
                         <Input className="form-check-input" type="checkbox" id="checkbox2" name="checkbox2" value="option2" />
-                        <Label check className="form-check-label" htmlFor="checkbox2">Straight Up (2)</Label>
+                        <Label check className="form-check-label" htmlFor="checkbox2">Total Under</Label>
                       </FormGroup>
                       <FormGroup check className="checkbox">
                         <Input className="form-check-input" type="checkbox" id="checkbox3" name="checkbox3" value="option3" />
-                        <Label check className="form-check-label" htmlFor="checkbox3">Straight Up (3)</Label>
+                        <Label check className="form-check-label" htmlFor="checkbox3">Favorite/Home ATS</Label>
                       </FormGroup>
                       <FormGroup check className="checkbox">
                         <Input className="form-check-input" type="checkbox" id="checkbox4" name="checkbox4" value="option4" />
-                        <Label check className="form-check-label" htmlFor="checkbox4">Two Team Parlay (1/2)</Label>
+                        <Label check className="form-check-label" htmlFor="checkbox4">Favorite/Away ATS</Label>
                       </FormGroup>
                       <FormGroup check className="checkbox">
                         <Input className="form-check-input" type="checkbox" id="checkbox5" name="checkbox5" value="option5" />
-                        <Label check className="form-check-label" htmlFor="checkbox5">Two Team Parlay (2/3)</Label>
+                        <Label check className="form-check-label" htmlFor="checkbox5">Favorite/Home Money Line</Label>
                       </FormGroup>
                       <FormGroup check className="checkbox">
                         <Input className="form-check-input" type="checkbox" id="checkbox6" name="checkbox6" value="option6" />
-                        <Label check className="form-check-label" htmlFor="checkbox6">Two Team Parlay (1/3)</Label>
+                        <Label check className="form-check-label" htmlFor="checkbox6">Favorite/Away Money Line</Label>
                       </FormGroup>
                       <FormGroup check className="checkbox">
                         <Input className="form-check-input" type="checkbox" id="checkbox7" name="checkbox7" value="option7" />
-                        <Label check className="form-check-label" htmlFor="checkbox7">Three Team Parlay (1/2/3)</Label>
+                        <Label check className="form-check-label" htmlFor="checkbox7">Underdog/Home ATS</Label>
+                      </FormGroup>
+                      <FormGroup check className="checkbox">
+                        <Input className="form-check-input" type="checkbox" id="checkbox8" name="checkbox8" value="option8" />
+                        <Label check className="form-check-label" htmlFor="checkbox8">Underdog/Away ATS</Label>
+                      </FormGroup>
+                      <FormGroup check className="checkbox">
+                        <Input className="form-check-input" type="checkbox" id="checkbox9" name="checkbox9" value="option9" />
+                        <Label check className="form-check-label" htmlFor="checkbox9">Underdog/Home Money Line</Label>
+                      </FormGroup>
+                      <FormGroup check className="checkbox">
+                        <Input className="form-check-input" type="checkbox" id="checkbox10" name="checkbox10" value="option10" />
+                        <Label check className="form-check-label" htmlFor="checkbox10">Underdog/Away Money Line</Label>
+                      </FormGroup>
+                    </Col>
+                  </FormGroup>
+                  <FormGroup row>
+                    <Col md="3"><Label>Wagering Days</Label></Col>
+                    <Col md="9">
+                      <FormGroup check className="checkbox">
+                        <Input className="form-check-input" type="checkbox" id="checkbox1" name="checkbox1" value="option1" />
+                        <Label check className="form-check-label" htmlFor="checkbox1">Monday</Label>
+                      </FormGroup>
+                      <FormGroup check className="checkbox">
+                        <Input className="form-check-input" type="checkbox" id="checkbox2" name="checkbox2" value="option2" />
+                        <Label check className="form-check-label" htmlFor="checkbox2">Tuesday</Label>
+                      </FormGroup>
+                      <FormGroup check className="checkbox">
+                        <Input className="form-check-input" type="checkbox" id="checkbox3" name="checkbox3" value="option3" />
+                        <Label check className="form-check-label" htmlFor="checkbox3">Wednesday</Label>
+                      </FormGroup>
+                      <FormGroup check className="checkbox">
+                        <Input className="form-check-input" type="checkbox" id="checkbox4" name="checkbox4" value="option4" />
+                        <Label check className="form-check-label" htmlFor="checkbox4">Thursday</Label>
+                      </FormGroup>
+                      <FormGroup check className="checkbox">
+                        <Input className="form-check-input" type="checkbox" id="checkbox5" name="checkbox5" value="option5" />
+                        <Label check className="form-check-label" htmlFor="checkbox5">Friday</Label>
+                      </FormGroup>
+                      <FormGroup check className="checkbox">
+                        <Input className="form-check-input" type="checkbox" id="checkbox6" name="checkbox6" value="option6" />
+                        <Label check className="form-check-label" htmlFor="checkbox6">Saturday</Label>
+                      </FormGroup>
+                      <FormGroup check className="checkbox">
+                        <Input className="form-check-input" type="checkbox" id="checkbox7" name="checkbox7" value="option7" />
+                        <Label check className="form-check-label" htmlFor="checkbox7">Sunday</Label>
                       </FormGroup>
                     </Col>
                   </FormGroup>

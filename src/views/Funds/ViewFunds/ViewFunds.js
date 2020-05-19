@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Badge, Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
+import { Badge, Card, CardBody, CardGroup, CardHeader, Col, Row, Table } from 'reactstrap';
+import Widget04 from '../../Widgets/Widget04';
 import { betfundApi } from '../../../api'
 import baseball1 from '../../../assets/img/sports/baseball1.jpeg'
 
@@ -46,6 +47,11 @@ class ViewFunds extends Component {
       )
   }
 
+  timeConvert(timestring) {
+    var date = new Date(timestring);
+    return date.toLocaleString();
+  }
+
   toggle() {
     this.setState({ collapse: !this.state.collapse });
   }
@@ -69,6 +75,14 @@ class ViewFunds extends Component {
       return (
         <div className="animated fadeIn">
           <Row>
+          <Col>
+
+            <CardGroup className="mb-4">
+              <Widget04 color="info" header={ items.length } value="100">Public Funds</Widget04>
+            </CardGroup>
+            </Col>
+          </Row>
+          <Row>
             {
               items.map(item => (
                 <Col xs="12" sm="6" md="4">
@@ -86,8 +100,8 @@ class ViewFunds extends Component {
                       <Table responsive size="sm">
                         <tbody>
                           <tr>
-                            <th>Timestamp</th>
-                            <td>{item.timestamp}</td>
+                            <th>Established</th>
+                            <td>{this.timeConvert(item.timestamp)}</td>
                           </tr>
                           <tr>
                             <th>Details</th>
