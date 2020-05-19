@@ -89,6 +89,25 @@ const betfundApi = {
     };
     return fetch(`${apiUrl}/api/v1/funds/`, options);
   },
+  /**
+   * Creates a fund
+   * @param {string} token - JWT token provided via Betfund API
+   */
+  async createFund(data, token = localStorage.getItem('token')) {
+    var headers = new Headers();
+    headers.append("Authorization", `Bearer ${token}`);
+    headers.append("Content-Type", "application/json");
+
+    var body = JSON.stringify(data)
+
+    var options = {
+      method: 'POST',
+      headers: headers,
+      body: body,
+      redirect: 'follow'
+    };
+    return fetch(`${apiUrl}/api/v1/funds/`, options);
+  },
   async updateUser(token, userId, data) {
     return axios.put(`${apiUrl}/api/v1/users/${userId}`, data, authHeaders(token));
   },

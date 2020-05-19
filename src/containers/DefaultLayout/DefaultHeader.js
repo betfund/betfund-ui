@@ -28,7 +28,7 @@ class DefaultHeader extends Component {
         />
         <AppSidebarToggler className="d-md-down-none" display="lg" />
 
-        <Nav className="d-md-down-none" navbar>
+        {/* <Nav className="d-md-down-none" navbar>
           <NavItem className="px-3">
             <NavLink to="/dashboard" className="nav-link" >Dashboard</NavLink>
           </NavItem>
@@ -38,7 +38,7 @@ class DefaultHeader extends Component {
           <NavItem className="px-3">
             <Link to="/events" className="nav-link">Events</Link>
           </NavItem>
-        </Nav>
+        </Nav> */}
         <Nav className="ml-auto" navbar>
           <UncontrolledDropdown nav direction="down">
             <DropdownToggle nav>

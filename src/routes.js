@@ -38,7 +38,7 @@ const Colors = React.lazy(() => import('./views/Theme/Colors'));
 const Widgets = React.lazy(() => import('./views/Widgets/Widgets'));
 
 const ViewFunds = React.lazy(() => import('./views/Funds/ViewFunds'));
-const CreateFunds = React.lazy(() => import('./views/Funds/CreateFunds'));
+const CreateFunds = React.lazy(() => import('./views/Funds/CreateFund/CreateFund'));
 // needs fixing
 const ViewFund = React.lazy(() => import('./views/Funds/ViewFund'));
 
