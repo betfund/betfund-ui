@@ -60,8 +60,31 @@ const betfundApi = {
    * Gets current user information
    * @param {string} token - JWT token provided via Betfund API
    */
-  async getMe(token) {
-    return axios.get(`${apiUrl}/api/v1/users/me`, authHeaders(token));
+  async getMe(token = localStorage.getItem('token')) {
+    var headers = new Headers();
+    headers.append("Authorization", `Bearer ${token}`);
+
+    var options = {
+      method: 'GET',
+      headers: headers,
+      redirect: 'follow'
+    };
+    return fetch(`${apiUrl}/api/v1/users/me`, options);
+  },
+  /**
+   * Gets current user's ledger nformation
+   * @param {string} token - JWT token provided via Betfund API
+   */
+  async getUserLedger(token = localStorage.getItem('token')) {
+    var headers = new Headers();
+    headers.append("Authorization", `Bearer ${token}`);
+
+    var options = {
+      method: 'GET',
+      headers: headers,
+      redirect: 'follow'
+    };
+    return fetch(`${apiUrl}/api/v1/user-ledgers`, options);
   },
   /**
    * Updates current users information
