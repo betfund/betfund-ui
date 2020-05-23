@@ -42,6 +42,9 @@ const CreateFunds = React.lazy(() => import('./views/Funds/CreateFund/CreateFund
 // needs fixing
 const ViewFund = React.lazy(() => import('./views/Funds/ViewFund'));
 
+const MyProfile = React.lazy(() => import('./views/Profile/MyProfile'));
+
+
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -87,6 +90,7 @@ const routes = [
   { path: '/funds', exact: true, name: 'Funds', component: ViewFunds },
   { path: '/funds/create', exact: true, name: 'Create', component: CreateFunds },
   { path: '/funds/:id', name: 'Details', component: ViewFund },
+  { path: '/profile', exact: true, name: 'Profile', component: MyProfile },
 ];
 
 export default routes;
