@@ -28,7 +28,8 @@ class Login extends Component {
   /**
    * Handles login action.
    */
-  handleLogin = () => {
+  handleLogin = (e) => {
+    e.preventDefault();
     // Set state of current action
     this.setState({ error: null });
     this.setState({ loading: true });
@@ -36,7 +37,7 @@ class Login extends Component {
     // Get access token from auth endpoint
     betfundApi.logInGetToken(this.state.username, this.state.password).then(
       (response) => {
-        sessionStorage.removeItem('token');
+        localStorage.removeItem('token');
         this.setState({ loading: true });
         // === is equivalent to ==, ESLint prefers ===
         if (response.status === 400) {
@@ -51,7 +52,7 @@ class Login extends Component {
           response.json().then(
             (data) => {
               // If we haven't hit any response issues, we should be good to save the token
-              sessionStorage.setItem('token', data.access_token);
+              localStorage.setItem('token', data.access_token);
               this.props.history.push('/dashboard')
             }
           )
@@ -59,8 +60,7 @@ class Login extends Component {
       },
       (error) => {
         // This happens if the API resource is not active
-        this.setState({ loading: false })
-        this.setState({ error: 'Something went wrong, please try again later.' });
+        this.props.history.push('/500')
       }
     )
   }
@@ -71,9 +71,7 @@ class Login extends Component {
   errorAlert = () => {
     if (this.state.error) {
       return (
-        <Alert color="danger">
-          { this.state.error }
-        </Alert>
+        <Alert color="danger">{this.state.error}</Alert>
       );
     } else {
       return null;
@@ -101,7 +99,7 @@ class Login extends Component {
                         </InputGroupAddon>
                         <Input
                           type="email"
-                          placeholder="Username"
+                          placeholder="Email"
                           autoComplete="username"
                           id="username"
                           value={this.state.username}
@@ -132,7 +130,7 @@ class Login extends Component {
                           </Button>
                         </Col>
                         <Col xs="6" className="text-right">
-                          <Button color="link" className="px-0">Forgot password?</Button>
+                          <Link to="/forgot" color="link" className="px-0">Forgot password?</Link>
                         </Col>
                       </Row>
                     </Form>

@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { betfundApi } from './api';
 
+const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
+
 const isAuthenticated = async () => {
   try {
-    const response = await betfundApi.isActiveToken(sessionStorage.getItem('token'));
+    const response = await betfundApi.isActiveToken(localStorage.getItem('token'));
     return response.ok;
   } catch (error) {
     return false;
@@ -20,7 +22,7 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => {
   return (
     <Route {...rest} render={(props) => {
         if (authenticated === null) {
-          return 'Loading...';
+          return loading();
         }
         return authenticated
           ? <Component {...props} />
@@ -38,7 +40,7 @@ const UnauthenticatedRoute = ({ component: Component, ...rest }) => {
   return (
     <Route {...rest} render={(props) => {
         if (authenticated === null) {
-          return 'Loading...';
+          return loading();
         }
         return !authenticated
           ? <Component {...props} />
@@ -48,4 +50,4 @@ const UnauthenticatedRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-export { AuthenticatedRoute, UnauthenticatedRoute };
+export { AuthenticatedRoute, UnauthenticatedRoute, loading };

@@ -1,0 +1,6 @@
+{
+    "name": "ViewFund",
+    "version": "0.0.0",
+    "private": true,
+    "main": "./ViewFund.js"
+}

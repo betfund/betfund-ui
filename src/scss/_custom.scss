@@ -1,1 +1,13 @@
 // Here you can add other styles
+textarea:focus, input:focus, button:focus{
+    outline: none;
+}
+.navbar-nav .nav-link {
+    color: black;
+}
+.sidebar .nav-link:hover {
+    background-color: #f86c6b;
+}
+.sidebar .nav-link.active .nav-icon {
+    color: #f86c6b;
+}
