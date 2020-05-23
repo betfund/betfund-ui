@@ -1,46 +1,81 @@
-// import React, { Component } from 'react';
-// import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Badge, Card, CardBody, CardGroup, CardHeader, Col, Row, Table } from 'reactstrap';
+import Widget01 from '../../Widgets/Widget01';
+import { betfundApi } from '../../../api'
 
-// import usersData from './UsersData'
+class ViewFund extends Component {
 
-// class User extends Component {
+  constructor(props) {
+    super(props);
 
-//   render() {
+    //   this.toggle = this.toggle.bind(this);
+    //   this.toggleFade = this.toggleFade.bind(this);
 
-//     const user = usersData.find( user => user.id.toString() === this.props.match.params.id)
+    this.state = {
+      error: null,
+      isLoaded: false,
+      item: {},
+      collapse: true,
+      fadeIn: true,
+      timeout: 300
+    };
+  }
 
-//     const userDetails = user ? Object.entries(user) : [['id', (<span><i className="text-muted icon-ban"></i> Not found</span>)]]
+  getFund() {
+    var fundId = this.props.match.params.id
+    betfundApi.getFund(fundId)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            item: result
+          });
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
 
-//     return (
-//       <div className="animated fadeIn">
-//         <Row>
-//           <Col lg={6}>
-//             <Card>
-//               <CardHeader>
-//                 <strong><i className="icon-info pr-1"></i>User id: {this.props.match.params.id}</strong>
-//               </CardHeader>
-//               <CardBody>
-//                   <Table responsive striped hover>
-//                     <tbody>
-//                       {
-//                         userDetails.map(([key, value]) => {
-//                           return (
-//                             <tr key={key}>
-//                               <td>{`${key}:`}</td>
-//                               <td><strong>{value}</strong></td>
-//                             </tr>
-//                           )
-//                         })
-//                       }
-//                     </tbody>
-//                   </Table>
-//               </CardBody>
-//             </Card>
-//           </Col>
-//         </Row>
-//       </div>
-//     )
-//   }
-// }
+  componentDidMount() {
+    this.getFund()
+  }
 
-// export default User;
+  timeConvert(timestring) {
+    var date = new Date(timestring);
+    return date.toLocaleString();
+  }
+
+  render() {
+    console.log(this.state.item)
+    const { error, isLoaded, item } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>
+    } else if (!isLoaded) {
+      return <div>Loading...</div>
+    } else {
+      return (
+        <div className="animated fadeIn">
+        <Row>
+          <Col xs="12" sm="6" lg="3">
+            <Widget01 color="success" header={item.name} mainText={item.owner_id}/>
+          </Col>
+          <Col xs="12" sm="6" lg="3">
+            <Widget01 color="info" header={this.timeConvert(item.timestamp)} mainText={item.description} />
+          </Col>
+        </Row>
+        </div>
+      )
+    }
+  }
+}
+
+export default ViewFund;

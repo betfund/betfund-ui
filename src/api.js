@@ -112,6 +112,22 @@ const betfundApi = {
     };
     return fetch(`${apiUrl}/api/v1/funds/`, options);
   },
+   /**
+   * Gets a fund for fundId
+   * @param {int} fundId - Fund id number for fund view
+   * @param {string} token - JWT token provided via Betfund API
+   */
+  async getFund(fundId, token = localStorage.getItem('token')) {
+    var headers = new Headers();
+    headers.append("Authorization", `Bearer ${token}`);
+
+    var options = {
+      method: 'GET',
+      headers: headers,
+      redirect: 'follow'
+    };
+    return fetch(`${apiUrl}/api/v1/funds/${fundId}`, options);
+  },
   /**
    * Creates a fund
    * @param {string} token - JWT token provided via Betfund API
