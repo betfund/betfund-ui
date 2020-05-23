@@ -87,7 +87,9 @@ class ViewFunds extends Component {
                 <Col xs="12" sm="6" md="4">
                   <Card>
                     <CardHeader>
-                      <b>{item.name}</b> (ID: {item.id})
+                      <a href={'/funds/' + item.id}>
+                        <b>{item.name}</b> (ID: {item.id})
+                      </a>
                     </CardHeader>
                     <CardBody>
                       <img src={baseball1} width="100%" />
