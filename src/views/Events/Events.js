@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Badge, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
+import { Badge, Button, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
 import { betfundApi } from '../../api'
 import sportIdMap from '../../mappings'
+import { Link } from 'react-router-dom';
 
 class Events extends Component {
 
@@ -73,6 +74,7 @@ class Events extends Component {
                         <th>Away</th>
                         <th>Event</th>
                         <th>Status</th>
+                        <th>Odds</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -85,6 +87,15 @@ class Events extends Component {
                             <td>{item.data.away.name}</td>
                             <td>{item.data.league.name}</td>
                             <td>{item.data.time_status}</td>
+                            <td>
+                              <Link to={{
+                                pathname: `/odds/${item._id}`,
+                                state: {
+                                  odds: item.data.odds
+                                }
+                              }}><Button block color="success">Odds</Button>
+                              </Link>
+                            </td>
                           </tr>
                         ))
                       }
