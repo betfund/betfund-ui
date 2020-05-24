@@ -91,7 +91,7 @@ class Events extends Component {
                               <Link to={{
                                 pathname: `/odds/${item._id}`,
                                 state: {
-                                  odds: item.data.odds
+                                  item: item
                                 }
                               }}><Button block color="success">Odds</Button>
                               </Link>
