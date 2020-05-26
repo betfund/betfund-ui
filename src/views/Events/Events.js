@@ -21,7 +21,10 @@ class Events extends Component {
   }
 
   getEvents() {
-    betfundApi.upcomingEvents()
+    var now = new Date()  
+    var asOf = Math.round(now.getTime() / 1000)
+
+    betfundApi.upcomingEvents(asOf)
       .then(res => res.json())
       .then(
         (result) => {
@@ -93,7 +96,7 @@ class Events extends Component {
                                 state: {
                                   item: item
                                 }
-                              }}><Button block color="success">Odds</Button>
+                              }}><Button block color="success" disabled={!item.data.odds}>View Odds</Button>
                               </Link>
                             </td>
                           </tr>
