@@ -6,6 +6,7 @@ const Cards = React.lazy(() => import('./views/Base/Cards'));
 // const Collapses = React.lazy(() => import('./views/Base/Collapses'));
 // const Dropdowns = React.lazy(() => import('./views/Base/Dropdowns'));
 const Events = React.lazy(() => import('./views/Events'));
+const EventOdds = React.lazy(() => import('./views/EventOdds'));
 const Forms = React.lazy(() => import('./views/Base/Forms'));
 // const Jumbotrons = React.lazy(() => import('./views/Base/Jumbotrons'));
 // const ListGroups = React.lazy(() => import('./views/Base/ListGroups'));
@@ -91,6 +92,7 @@ const routes = [
   { path: '/funds/create', exact: true, name: 'Create', component: CreateFunds },
   { path: '/funds/:id', name: 'Details', component: ViewFund },
   { path: '/profile', exact: true, name: 'Profile', component: MyProfile },
+  { path: '/odds/:id', name: 'EventOdds', component: EventOdds}
 ];
 
 export default routes;
