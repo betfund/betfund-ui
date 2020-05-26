@@ -21,7 +21,7 @@ class Events extends Component {
   }
 
   getEvents() {
-    var now = new Date()  
+    var now = new Date()
     var asOf = Math.round(now.getTime() / 1000)
 
     betfundApi.upcomingEvents(asOf)
@@ -92,7 +92,7 @@ class Events extends Component {
                             <td>{item.data.time_status}</td>
                             <td>
                               <Link to={{
-                                pathname: `/odds/${item._id}`,
+                                pathname: `/events/${item._id}`,
                                 state: {
                                   item: item
                                 }

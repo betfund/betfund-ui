@@ -57,17 +57,10 @@ class EventOdds extends Component {
       return (
         <div className="animated fadeIn">
           <Row>
-            <Card>
-              <CardHeader>
-                <i className="fa fa-align-justify"></i> Event
-              </CardHeader>
-              <CardGroup className="mb-4">
-                <Widget04 color="info" header={
-                  `${item.data.away.name} vs. ${item.data.home.name}`
-                } value="100"> {sportIdMap[item.data.sport_id]}: {item.data.league.name} | {this.epochConvert(item.data.time)}
-                </Widget04>
-              </CardGroup>
-            </Card>
+            <Widget04 color="info" header={
+              `${item.data.away.name} vs. ${item.data.home.name}`
+            } value="100"> {sportIdMap[item.data.sport_id]}: {item.data.league.name} | {this.epochConvert(item.data.time)}
+            </Widget04>
           </Row>
           <Row>
             <Card>
@@ -91,7 +84,7 @@ class EventOdds extends Component {
                           <td>{item.name}</td>
                           <td>
                             <Link to={{
-                              pathname: `/lines/${item.id}`,
+                              pathname: `/events/${item.id}`,
                               state: {
                                 item: item
                               }

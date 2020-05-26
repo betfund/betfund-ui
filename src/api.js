@@ -112,6 +112,26 @@ const betfundApi = {
     };
     return fetch(`${apiUrl}/api/v1/funds/`, options);
   },
+  /**
+   *
+   * @param {int} amount - Amount to deposit/withdraw
+   * @param {string} token - JWT token provided via Betfund API
+   */
+  async createUserLedger(data, token = localStorage.getItem('token')) {
+    var headers = new Headers();
+    headers.append("Authorization", `Bearer ${token}`);
+    headers.append("Content-Type", "application/json");
+
+    var body = JSON.stringify(data)
+
+    var options = {
+      method: 'POST',
+      headers: headers,
+      body: body,
+      redirect: 'follow'
+    };
+    return fetch(`${apiUrl}/api/v1/user-ledgers`, options);
+  },
    /**
    * Gets a fund for fundId
    * @param {int} fundId - Fund id number for fund view

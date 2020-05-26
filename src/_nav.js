@@ -6,6 +6,11 @@ export default {
       icon: 'icon-speedometer'
     },
     {
+      name: 'Profile',
+      url: '/profile',
+      icon: 'icon-user'
+    },
+    {
       title: true,
       name: 'Features',
       wrapper: {            // optional wrapper object

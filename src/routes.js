@@ -76,7 +76,8 @@ const routes = [
   { path: '/buttons/button-dropdowns', name: 'Button Dropdowns', component: ButtonDropdowns },
   { path: '/buttons/button-groups', name: 'Button Groups', component: ButtonGroups },
   { path: '/buttons/brand-buttons', name: 'Brand Buttons', component: BrandButtons },
-  { path: '/events', name: 'Events', component: Events },
+  { path: '/events', exact: true, name: 'Events', component: Events },
+  { path: '/events/:id', name: 'Odds', component: EventOdds},
   // { path: '/icons', exact: true, name: 'Icons', component: CoreUIIcons },
   // { path: '/icons/coreui-icons', name: 'CoreUI Icons', component: CoreUIIcons },
   // { path: '/icons/flags', name: 'Flags', component: Flags },
@@ -92,7 +93,6 @@ const routes = [
   { path: '/funds/create', exact: true, name: 'Create', component: CreateFunds },
   { path: '/funds/:id', name: 'Details', component: ViewFund },
   { path: '/profile', exact: true, name: 'Profile', component: MyProfile },
-  { path: '/odds/:id', name: 'EventOdds', component: EventOdds}
 ];
 
 export default routes;
